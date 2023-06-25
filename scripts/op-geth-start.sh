@@ -43,4 +43,3 @@ exec geth \
   --metrics.port 6060 \
   --metrics.addr 0.0.0.0 \
   --rollup.sequencerhttp=$L2_RPC
-  $@

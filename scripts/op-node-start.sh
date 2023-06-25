@@ -30,4 +30,3 @@ exec op-node \
   --l2=http://op-geth:8551 \
   --l2.jwt-secret=./jwt.txt \
   --log.level=debug
-
