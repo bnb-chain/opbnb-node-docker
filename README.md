@@ -27,7 +27,7 @@ Follow the steps below to run your own opBNB node:
     ```
 
 3. Fill in all the `REQUIRED` parts in the `.env` file.
-4. Generate `jwt.txt`:
+4. Generate `jwt.txt` (Optional):
 
     ```
     openssl rand -hex 32 > jwt.txt
