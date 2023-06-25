@@ -34,16 +34,7 @@ Follow the steps below to run your own opBNB node:
     
     ```
 
-5. Get `genesis.json` and `rollup.json` files from the opBNB code repository:
-
-    ```
-    git clone https://github.com/bnb-chain/opbnb.git
-    cp opbnb/assets/testnet/genesis.json ./
-    cp opbnb/assets/testnet/rollup.json ./
-    
-    ```
-
-6. Once everything is ready, use the command to start the node: `docker compose up -d`
+5. Once everything is ready, use the command to start the node: `docker compose up -d`
 
 ## Operating the Node
 

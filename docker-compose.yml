@@ -14,7 +14,7 @@ services:
     platform: linux/amd64
     restart: unless-stopped
     stop_grace_period: 5m
-    entrypoint: /scripts/op-geth-start.sh
+    entrypoint: /scripts/op-get√h-start.sh
     env_file:
       - ./envs/${NETWORK_NAME}/op-geth.env
       - .env
@@ -23,7 +23,7 @@ services:
     volumes:
       - ./scripts/:/scripts
       - ./jwt.txt:/jwt.txt
-      - ./genesis.json:/genesis.json
+      - ./genesis/${NETWORK_NAME}/genesis.json:/genesis.json
       - op_geth:/geth
     <<: *logging
 
@@ -43,7 +43,7 @@ services:
     volumes:
       - ./scripts/:/scripts
       - ./jwt.txt:/jwt.txt
-      - ./rollup.json:/rollup.json
+      - ./genesis/${NETWORK_NAME}/rollup.json:/rollup.json
     <<: *logging
 
 volumes:
