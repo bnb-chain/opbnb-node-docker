@@ -1,6 +1,6 @@
 # opbnb-node-docker
 
-## Hardware requirements
+## Hardware Requirements
 Replicas must store the transaction history of opBNB and run Geth. For optimal performance, they should be powerful machines (real or virtual) with at least 16 GB RAM and an SSD drive with 500 GB free space (for production network).
 ## Software Requirements
 
