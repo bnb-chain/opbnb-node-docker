@@ -14,7 +14,7 @@ services:
     platform: linux/amd64
     restart: unless-stopped
     stop_grace_period: 5m
-    entrypoint: /scripts/op-get√h-start.sh
+    entrypoint: /scripts/op-geth-start.sh
     env_file:
       - ./envs/${NETWORK_NAME}/op-geth.env
       - .env
