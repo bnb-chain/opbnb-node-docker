@@ -23,7 +23,6 @@ services:
     volumes:
       - ./scripts/:/scripts
       - ./jwt.txt:/jwt.txt
-      - ./genesis/${NETWORK_NAME}/genesis.json:/genesis.json
       - op_geth:/geth
     <<: *logging
 
@@ -43,7 +42,6 @@ services:
     volumes:
       - ./scripts/:/scripts
       - ./jwt.txt:/jwt.txt
-      - ./genesis/${NETWORK_NAME}/rollup.json:/rollup.json
     <<: *logging
 
 volumes:
