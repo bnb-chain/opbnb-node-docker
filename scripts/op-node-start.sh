@@ -3,8 +3,8 @@ set -eou
 
 apk add wget
 if [ "$NETWORK_NAME" == "testnet" ]; then
-  if [ ! -f rollup.json ]; then
-    wget https://raw.githubusercontent.com/bnb-chain/opbnb/develop/assets/testnet/rollup.json
+  if [ ! -f /op_node/rollup.json ]; then
+    wget -O /op_node/rollup.json https://raw.githubusercontent.com/bnb-chain/opbnb/develop/assets/testnet/rollup.json
   else
      echo "rollup.json exists."
   fi
@@ -12,8 +12,8 @@ if [ "$NETWORK_NAME" == "testnet" ]; then
 fi
 
 if [ "$NETWORK_NAME" == "mainnet" ]; then
-  if [ ! -f rollup.json ]; then
-    wget https://raw.githubusercontent.com/bnb-chain/opbnb/develop/assets/mainnet/rollup.json
+  if [ ! -f /op_node/rollup.json ]; then
+    wget -O /op_node/rollup.json https://raw.githubusercontent.com/bnb-chain/opbnb/develop/assets/mainnet/rollup.json
   else
      echo "rollup.json exists."
   fi
@@ -28,7 +28,7 @@ exec op-node \
   --l1.http-poll-interval 3s \
   --l1.epoch-poll-interval 45s \
   --l1.rpc-max-batch-size 20 \
-  --rollup.config=./rollup.json \
+  --rollup.config=/op_node/rollup.json \
   --rpc.addr=0.0.0.0 \
   --rpc.port=8546 \
   --p2p.sync.req-resp \

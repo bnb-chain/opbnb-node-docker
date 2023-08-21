@@ -2,23 +2,23 @@
 set -eou
 apk add wget
 if [ "$NETWORK_NAME" == "testnet" ]; then
-  if [ ! -f genesis.json ]; then
-    wget https://raw.githubusercontent.com/bnb-chain/opbnb/develop/assets/testnet/genesis.json
+  if [ ! -f $BEDROCK_DATADIR/genesis.json ]; then
+    wget -O $BEDROCK_DATADIR/genesis.json https://raw.githubusercontent.com/bnb-chain/opbnb/develop/assets/testnet/genesis.json
   else
      echo "genesis.json exists."
   fi
 fi
 
 if [ "$NETWORK_NAME" == "mainnet" ]; then
-  if [ ! -f genesis.json ]; then
-    wget https://raw.githubusercontent.com/bnb-chain/opbnb/develop/assets/mainnet/genesis.json
+  if [ ! -f $BEDROCK_DATADIR/genesis.json ]; then
+    wget -O $BEDROCK_DATADIR/genesis.json https://raw.githubusercontent.com/bnb-chain/opbnb/develop/assets/mainnet/genesis.json
   else
      echo "genesis.json exists."
   fi
 fi
 
 if [ ! -d $BEDROCK_DATADIR/geth ]; then
-  exec geth --datadir $BEDROCK_DATADIR init genesis.json
+  exec geth --datadir $BEDROCK_DATADIR init $BEDROCK_DATADIR/genesis.json
 else
    echo "$BEDROCK_DATADIR/geth exists."
 fi

@@ -42,7 +42,9 @@ services:
     volumes:
       - ./scripts/:/scripts
       - ./jwt.txt:/jwt.txt
+      - op_node:/op_node
     <<: *logging
 
 volumes:
   op_geth:
+  op_node:
