@@ -10,7 +10,7 @@ x-logging: &logging
 services:
 
   op-geth:
-    image: ghcr.io/bnb-chain/op-geth:latest
+    image: ghcr.io/bnb-chain/op-geth:${OP_GETH_IMAGE_TAG}
     platform: linux/amd64
     restart: unless-stopped
     stop_grace_period: 5m
@@ -27,7 +27,7 @@ services:
     <<: *logging
 
   op-node:
-    image: ghcr.io/bnb-chain/op-node:latest
+    image: ghcr.io/bnb-chain/op-node:${OP_NODE_IMAGE_TAG}
     platform: linux/amd64
     depends_on:
       - op-geth
