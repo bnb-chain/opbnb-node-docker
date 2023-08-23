@@ -1,7 +1,24 @@
 #!/bin/sh
 set -eou
 
-export P2P_BOOTNODES="enr:-J24QGQBeMsXOaCCaLWtNFSfb2Gv50DjGOKToH2HUTAIn9yXImowlRoMDNuPNhSBZNQGCCE8eAl5O3dsONuuQp5Qix2GAYjB7KHSgmlkgnY0gmlwhDREiqaHb3BzdGFja4PrKwCJc2VjcDI1NmsxoQL4I9wpEVDcUb8bLWu6V8iPoN5w8E8q-GrS5WUCygYUQ4N0Y3CCIyuDdWRwgiMr"
+apk add wget
+if [ "$NETWORK_NAME" == "testnet" ]; then
+  if [ ! -f /op_node/rollup.json ]; then
+    wget -O /op_node/rollup.json https://raw.githubusercontent.com/bnb-chain/opbnb/develop/assets/testnet/rollup.json
+  else
+     echo "rollup.json exists."
+  fi
+  export P2P_BOOTNODES="enr:-J24QGQBeMsXOaCCaLWtNFSfb2Gv50DjGOKToH2HUTAIn9yXImowlRoMDNuPNhSBZNQGCCE8eAl5O3dsONuuQp5Qix2GAYjB7KHSgmlkgnY0gmlwhDREiqaHb3BzdGFja4PrKwCJc2VjcDI1NmsxoQL4I9wpEVDcUb8bLWu6V8iPoN5w8E8q-GrS5WUCygYUQ4N0Y3CCIyuDdWRwgiMr"
+fi
+
+if [ "$NETWORK_NAME" == "mainnet" ]; then
+  if [ ! -f /op_node/rollup.json ]; then
+    wget -O /op_node/rollup.json https://raw.githubusercontent.com/bnb-chain/opbnb/develop/assets/mainnet/rollup.json
+  else
+     echo "rollup.json exists."
+  fi
+  export P2P_BOOTNODES="enr:-J24QGRN1ZLv--bzrqM-qRC-zUlCO4irVVg2bbWOvd3KEFjwLj8qCh54a1ziqic84uQz-2RLVSuNyNAbKEfrNr-STj-GAYoIQDCIgmlkgnY0gmlwhDaykUmHb3BzdGFja4PMAQCJc2VjcDI1NmsxoQJ-_5GZKjs7jaB4TILdgC8EwnwyL3Qip89wmjnyjvDDwoN0Y3CCIyuDdWRwgiMr"
+fi
 
 # Start op-node.
 exec op-node \
@@ -11,7 +28,7 @@ exec op-node \
   --l1.http-poll-interval 3s \
   --l1.epoch-poll-interval 45s \
   --l1.rpc-max-batch-size 20 \
-  --rollup.config=./rollup.json \
+  --rollup.config=/op_node/rollup.json \
   --rpc.addr=0.0.0.0 \
   --rpc.port=8546 \
   --p2p.sync.req-resp \
