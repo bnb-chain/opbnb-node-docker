@@ -7,6 +7,7 @@ if [ "$NETWORK_NAME" == "testnet" ]; then
   else
      echo "genesis.json exists."
   fi
+  export P2P_BOOTNODES="enr:-KO4QKFOBDW--pF4pFwv3Al_jiLOITj_Y5mr1Ajyy2yxHpFtNcBfkZEkvWUxAKXQjWALZEFxYHooU88JClyzA00e8YeGAYtBOOZig2V0aMfGhE0ZYGqAgmlkgnY0gmlwhDREiqaJc2VjcDI1NmsxoQM8pC_6wwTr5N2Q-yXQ1KGKsgz9i9EPLk8Ata65pUyYG4RzbmFwwIN0Y3CCdl-DdWRwgnZf,enr:-KO4QFJc0KR09ye818GT2kyN9y6BAGjhz77sYimxn85jJf2hOrNqg4X0b0EsS-_ssdkzVpavqh6oMX7W5Y81xMRuEayGAYtBSiK9g2V0aMfGhE0ZYGqAgmlkgnY0gmlwhANzx96Jc2VjcDI1NmsxoQPwA1XHfWGd4umIt7j3Fc7hKq_35izIWT_9yiN_tX8lR4RzbmFwwIN0Y3CCdl-DdWRwgnZf"
 fi
 
 if [ "$NETWORK_NAME" == "mainnet" ]; then
@@ -58,4 +59,6 @@ exec geth \
   --metrics \
   --metrics.port 6060 \
   --metrics.addr 0.0.0.0 \
+  --syncmode=full \
+  --bootnodes=$P2P_BOOTNODES \
   --rollup.sequencerhttp=$L2_RPC
