@@ -46,9 +46,7 @@ exec geth \
   --triesInMemory=32 \
   --txpool.globalslots=10000 \
   --txpool.globalqueue=5000 \
-  --txpool.accountqueue=200 \
-  --txpool.accountslots=200 \
-  --cache 32000 \
+  --cache 6000 \
   --cache.preimages \
   --allow-insecure-unlock \
   --authrpc.addr="0.0.0.0" \
