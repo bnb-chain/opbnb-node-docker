@@ -23,7 +23,7 @@ Follow the steps below to run your own opBNB node:
 2. Copy `.env.testnet.example`(or `.env.mainnet.example` if you want to start mainnet node), and name it `.env`:
 
     ```
-    cp .env.example .env
+    cp .env.testnet.example .env
     
     ```
 
